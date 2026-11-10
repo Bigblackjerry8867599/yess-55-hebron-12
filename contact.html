@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Genesis Hospitality Group - Hotels & Stays</title>
+    <meta name="description" content="Get in touch with Genesis Hospitality Group. We'd love to hear from you about bookings, events, conferences or partnership opportunities.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #556b2f;
+            --secondary: #ffd166;
+            --dark: #2d3436;
+            --light: #000000;
+            --accent: #ffd166;
+            --text: #ffffff;
+            --hero-green: #2c3718;
+
+            --font-display: 'Marcellus', 'Playfair Display', Georgia, serif;
+            --font-body: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+        }
+
+                * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text);
+            background-color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-display);
+            font-weight: 400;
+            letter-spacing: 0.01em;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: sticky;
+            top: 0;
+            background: linear-gradient(135deg, #556b2f 0%, #2c3718 100%);
+            z-index: 1000;
+            border-bottom: none;
+            padding: 0;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            font-family: var(--font-body);
+            overflow: visible;
+        }
+
+        nav::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: -10px; height: 10px;
+            background: linear-gradient(to bottom, rgba(44,55,24,0.8), transparent);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .nav-container {
+            width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1rem;
+            display: flex; align-items: center; justify-content: flex-end; height: 100%;
+        }
+
+        #menu-toggle {
+            display: none; margin-left: 0.5rem; font-size: 1rem; line-height: 1;
+            padding: 2px 8px; min-width: 32px; min-height: 20px;
+            background: transparent; border: none; cursor: pointer; color: #fff;
+        }
+
+        #nav-links { list-style: none; display: flex; align-items: center; gap: 1rem; margin: 0; padding: 0; }
+        #nav-links a {
+            text-decoration: none; color: #fff; font-family: var(--font-body);
+            font-weight: 600; font-size: 0.92rem; letter-spacing: 0.04em; line-height: 1; display: block;
+        }
+        #nav-links a:hover { color: var(--accent); }
+        #nav-links .nav-cta {
+            background-color: var(--accent); color: #3e362e; padding: 0.1rem 0.6rem;
+            border-radius: 4px; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.09em; text-transform: uppercase;
+        }
+
+        #nav-links.open {
+            display: flex; flex-direction: column; align-items: flex-start;
+            position: absolute; top: 22px; right: 1rem; padding: 1rem;
+            background: linear-gradient(135deg, #556b2f 0%, #2c3718 100%);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2); border-radius: 5px; gap: 1rem; z-index: 999; text-align: left;
+        }
+
+        @media (max-width: 768px) {
+            #menu-toggle { display: block; }
+            #nav-links { display: none; }
+        }
+
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+
+        .btn {
+            display: inline-block; padding: 12px 28px; border-radius: 30px;
+            text-decoration: none; font-family: var(--font-body); font-weight: 700;
+            letter-spacing: 0.04em; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 17px;
+        }
+        .btn-primary { background-color: var(--accent); color: #22300f; }
+        .btn-primary:hover { background-color: #ffffff; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .btn-secondary { background-color: transparent; border: 2px solid var(--primary); color: #fff; }
+        .btn-secondary:hover { background-color: var(--primary); color: white; transform: translateY(-3px); }
+
+        /* HERO */
+        section.hero {
+            position: relative; padding-top: 0 !important; margin-top: 0 !important;
+            min-height: 900px; overflow: hidden; isolation: isolate;
+            background: linear-gradient(135deg, #556b2f 0%, #2c3718 50%, #1e2a12 100%);
+        }
+
+        .hero-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+        .hero-bg::after {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(0,0,0,0.45) 100%);
+        }
+        .blob { position: absolute; display: block; border-radius: 50%; mix-blend-mode: screen; will-change: transform; }
+        .blob-1 {
+            width: 65vw; height: 65vw; top: -28%; left: -18%;
+            background: radial-gradient(circle, rgba(255,209,102,0.45) 0%, rgba(255,209,102,0.12) 45%, transparent 72%);
+            animation: drift-1 26s ease-in-out infinite alternate;
+        }
+        .blob-2 {
+            width: 55vw; height: 55vw; top: 2%; right: -20%;
+            background: radial-gradient(circle, rgba(85,107,47,0.55) 0%, transparent 70%);
+            animation: drift-2 32s ease-in-out infinite alternate;
+        }
+        .blob-3 {
+            width: 46vw; height: 46vw; bottom: -22%; left: 18%;
+            background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, transparent 70%);
+            animation: drift-3 22s ease-in-out infinite alternate;
+        }
+        .blob-4 {
+            width: 38vw; height: 38vw; bottom: 2%; right: 8%;
+            background: radial-gradient(circle, rgba(217,164,65,0.30) 0%, transparent 70%);
+            animation: drift-4 29s ease-in-out infinite alternate;
+        }
+        @keyframes drift-1 { from { transform: translate3d(0,0,0) scale(1); } to { transform: translate3d(8vw,6vh,0) scale(1.15); } }
+        @keyframes drift-2 { from { transform: translate3d(0,0,0) scale(1.05); } to { transform: translate3d(-9vw,8vh,0) scale(0.92); } }
+        @keyframes drift-3 { from { transform: translate3d(0,0,0) scale(0.95); } to { transform: translate3d(10vw,-7vh,0) scale(1.2); } }
+        @keyframes drift-4 { from { transform: translate3d(0,0,0) scale(1.1); } to { transform: translate3d(-7vw,-9vh,0) scale(0.9); } }
+
+        .hero-container { position: relative; z-index: 2; max-width: 100%; margin: 0 auto; padding: 0; display: flex; flex-wrap: wrap; align-items: flex-start; overflow: hidden; }
+        .hero-column { flex: 1; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; padding: 20px; position: relative; overflow: hidden; margin-left: 5%; }
+        .hero-column:nth-child(1) { margin-top: 0; width: 55%; margin-left: 5%; padding: 0 20px 40px; background: transparent; }
+        .hero-column:nth-child(2) { width: 45%; padding: 0; margin-left: 0; background: transparent; position: relative; min-height: 800px; }
+        .hero-lady { position: absolute; top: 480px; right: 0; width: 100%; max-width: 720px; height: auto; object-fit: contain; object-position: bottom center; display: block; filter: drop-shadow(0 25px 35px rgba(0,0,0,0.45)); pointer-events: none; z-index: 1; animation: lady-float 7s ease-in-out infinite; }
+        @keyframes lady-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+        .headline-right { color: #fff; background-color: #2c3718; padding: 12px 28px; border-radius: 50px; display: inline-block; font-size: 1.55rem; font-weight: 400; font-family: var(--font-display); letter-spacing: 0.04em; box-shadow: 0 6px 18px rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.2); align-self: flex-end; margin-right: 5%; position: relative; z-index: 10; }
+        .headline-right::before, .headline-right::after { content: '\2022'; color: #fff; font-size: 1.5rem; margin: 0 8px; opacity: 0.9; }
+        .hero-text { font-size: 4.5rem; margin-bottom: 0.5rem; color: #fff; font-weight: 400; margin-top: 0; letter-spacing: 0.02em; text-shadow: 0 2px 16px rgba(0,0,0,0.55); }
+        .hero-paragraph { font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: rgba(255,255,255,0.9); text-shadow: 0 2px 12px rgba(0,0,0,0.55); line-height: 1.7; }
+        .hero-btns { display: flex; gap: 10px; margin-top: 8px; margin-left: 5%; padding: 0 20px 40px 20px; }
+
+        @media (max-width: 992px) {
+            section.hero { min-height: 750px; }
+            .hero-text { font-size: 3.2rem; }
+            .hero-paragraph { font-size: 1.1rem; }
+            .hero-column:nth-child(2) { min-height: 650px; }
+            .hero-lady { max-width: 500px; top: 380px; }
+            .headline-right { font-size: 1.35rem; padding: 10px 22px; }
+        }
+        @media (max-width: 768px) {
+            section.hero { min-height: auto; padding-bottom: 30px; }
+            .blob-4 { display: none; }
+            .blob-1, .blob-2, .blob-3 { animation-duration: 40s; }
+            .hero-container { flex-direction: column; align-items: center; }
+            .hero-text { font-size: 1.95rem; }
+            .hero-paragraph { font-size: 1rem; }
+            .hero-column:nth-child(1) { order: 1; width: 100%; margin-left: 0; padding: 10px 20px; }
+            .hero-column:nth-child(2) { order: 2; width: 100%; margin-left: 0; padding: 10px 20px 0; align-items: center; min-height: auto; }
+            .hero-lady { position: static; max-width: 340px; margin: 30px auto 0; order: 2; animation: none; }
+            .headline-right { font-size: 1.15rem; padding: 8px 18px; align-self: center; margin-right: 0; order: 1; }
+            .headline-right::before, .headline-right::after { font-size: 1.15rem; margin: 0 4px; }
+            .hero-btns { margin-left: 0; padding: 0 20px 30px; order: 3; width: 100%; justify-content: center; }
+        }
+        @media (max-width: 576px) {
+            .hero-lady { max-width: 260px; }
+            .headline-right { font-size: 1rem; padding: 6px 14px; }
+        }
+        @media (prefers-reduced-motion: reduce) { .blob, .hero-lady { animation: none !important; } }
+
+        /* Contact Section */
+        .contact-section { padding: 100px 0; background-color: var(--light); }
+        .contact-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 50px; margin-top: 50px; }
+        .contact-info { background: var(--dark); border-radius: 20px; padding: 50px 40px; position: relative; overflow: hidden; }
+        .contact-info::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 C50,100 50,0 100,100 L100,0 Z" fill="rgba(255,209,102,0.05)"/></svg>');
+            background-size: cover; opacity: 0.3; z-index: 0;
+        }
+        .contact-info-content { position: relative; z-index: 2; }
+        .contact-info h3 { font-size: 1.9rem; margin-bottom: 30px; color: #ffffff; position: relative; padding-bottom: 15px; letter-spacing: 0.02em; }
+        .contact-info h3::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 3px; background-color: var(--accent); }
+        .contact-details { margin-bottom: 40px; }
+        .contact-item { display: flex; margin-bottom: 25px; }
+        .contact-icon { width: 50px; height: 50px; background-color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; margin-right: 20px; flex-shrink: 0; }
+        .contact-text h4 { margin-bottom: 5px; font-size: 1.2rem; letter-spacing: 0.02em; }
+        .contact-text p { font-size: 1.05rem; font-weight: 500; color: rgba(255,255,255,0.85); line-height: 1.65; }
+        .contact-text a { color: var(--accent); text-decoration: none; transition: color 0.3s ease; }
+        .contact-text a:hover { color: #ffffff; }
+        .social-contact { display: flex; gap: 15px; margin-top: 30px; }
+        .social-contact a { width: 45px; height: 45px; border-radius: 50%; background-color: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: transform 0.3s ease; }
+        .social-contact a:hover { transform: translateY(-5px); background-color: var(--accent); color: #22300f; }
+
+        .contact-form { background-color: var(--dark); border-radius: 20px; padding: 50px 40px; }
+        .contact-form h3 { font-size: 1.9rem; margin-bottom: 30px; color: #ffffff; position: relative; padding-bottom: 15px; letter-spacing: 0.02em; }
+        .contact-form h3::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 3px; background-color: var(--accent); }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; margin-bottom: 8px; font-family: var(--font-body); font-weight: 600; font-size: 1.05rem; letter-spacing: 0.03em; }
+        .form-control { width: 100%; padding: 15px 20px; border: 1px solid #ddd; border-radius: 10px; font-family: var(--font-body); font-size: 1.05rem; font-weight: 500; transition: border-color 0.3s ease; }
+        .form-control:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px rgba(255,209,102,0.25); }
+        textarea.form-control { min-height: 150px; resize: vertical; }
+
+        /* FAQ */
+        .faq-section { padding: 100px 0; background: #2c3718; }
+        .section-title { text-align: center; margin-bottom: 50px; position: relative; }
+        .section-title h2 { font-size: 2.6rem; color: #ffffff; display: inline-block; padding-bottom: 15px; letter-spacing: 0.02em; }
+        .section-title h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background-color: var(--accent); border-radius: 2px; }
+        .section-title p { font-size: 1.15rem; font-weight: 500; color: rgba(255,255,255,0.85); margin-top: 10px; max-width: 620px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { background-color: var(--dark); border-radius: 15px; overflow: hidden; margin-bottom: 20px; }
+        .faq-question { padding: 25px 30px; font-family: var(--font-body); font-size: 1.3rem; font-weight: 700; letter-spacing: 0.02em; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background-color: var(--dark); }
+        .faq-question i { transition: transform 0.3s ease; }
+        .faq-answer { padding: 0 30px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
+        .faq-answer-content { padding: 0 0 30px; }
+        .faq-answer-content p { font-size: 1.05rem; font-weight: 500; color: rgba(255,255,255,0.88); line-height: 1.7; }
+        .faq-item.active .faq-question i { transform: rotate(180deg); }
+        .faq-item.active .faq-answer { max-height: 500px; }
+
+        /* Map */
+        .map-section { padding: 0 0 100px; background-color: #000000; }
+        .map-container { height: 500px; border-radius: 20px; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.1); position: relative; }
+        .map-placeholder { width: 100%; height: 100%; background: #1a1a1a; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; }
+        .map-placeholder i { font-size: 4rem; color: var(--accent); margin-bottom: 20px; }
+        .map-placeholder h3 { font-size: 1.85rem; margin-bottom: 12px; letter-spacing: 0.02em; }
+        .map-placeholder p { font-size: 1.1rem; font-weight: 500; color: rgba(255,255,255,0.85); line-height: 1.7; margin: 4px 0; max-width: 620px; }
+
+        /* CTA */
+        .cta { padding: 120px 0; background: linear-gradient(135deg, #556b2f 0%, #2c3718 100%); color: white; text-align: center; position: relative; overflow: hidden; }
+        .cta h2 { font-size: 2.9rem; margin-bottom: 20px; letter-spacing: 0.02em; line-height: 1.2; }
+        .cta p { font-size: 1.35rem; font-weight: 600; max-width: 700px; margin: 0 auto 40px; opacity: 0.92; line-height: 1.7; }
+        .cta-btns { display: flex; justify-content: center; gap: 20px; margin-top: 30px; flex-wrap: wrap; }
+        .btn-light { background-color: var(--accent); color: #22300f; }
+        .btn-light:hover { background-color: #fff; transform: translateY(-3px); }
+        .btn-outline-light { background-color: transparent; border: 2px solid white; color: white; }
+        .btn-outline-light:hover { background-color: white; color: #22300f; transform: translateY(-3px); }
+
+        /* Footer */
+        footer { background-color: var(--dark); color: rgba(255,255,255,0.75); padding: 70px 0 30px; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 50px; }
+        .footer-column { background-color: var(--dark); color: rgba(255,255,255,0.78); }
+        .footer-logo { font-family: var(--font-display); font-size: 2rem; font-weight: 400; color: white; margin-bottom: 20px; display: inline-block; letter-spacing: 0.03em; }
+        .footer-about p { margin-bottom: 20px; font-size: 1.05rem; font-weight: 500; line-height: 1.7; }
+        .social-links { display: flex; gap: 15px; }
+        .social-links a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255,255,255,0.1); color: white; transition: all 0.3s ease; }
+        .social-links a:hover { background-color: var(--primary); transform: translateY(-3px); }
+        .footer-heading { font-size: 1.4rem; color: white; margin-bottom: 25px; position: relative; padding-bottom: 10px; letter-spacing: 0.02em; }
+        .footer-heading::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 2px; background-color: var(--accent); }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: rgba(255,255,255,0.78); text-decoration: none; font-size: 1.05rem; font-weight: 500; transition: color 0.3s ease; }
+        .footer-links a:hover { color: white; }
+        footer .footer-column h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.4rem; letter-spacing: 0.02em; color: #ffffff; margin-bottom: 18px; }
+        footer .footer-column p, footer .footer-column span, footer .contact-info li { font-family: var(--font-body); font-size: 1.05rem; font-weight: 500; line-height: 1.7; color: rgba(255,255,255,0.82); }
+        .copyright { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.98rem; }
+        .copyright p { font-family: var(--font-body); font-size: 1rem; font-weight: 500; letter-spacing: 0.03em; color: rgba(255,255,255,0.75); }
+
+        @media (max-width: 992px) { .hero h1 { font-size: 2.8rem; } }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.4rem; }
+            .hero-btns, .cta-btns { flex-direction: column; align-items: center; gap: 15px; }
+            .contact-container { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 576px) {
+            .hero h1 { font-size: 2rem; }
+            .section-title h2 { font-size: 2.1rem; }
+            .cta h2 { font-size: 2.3rem; }
+            .contact-info, .contact-form { padding: 30px 20px; }
+            .map-container { height: 350px; }
+        }
+        html { font-size: 17px; }
+        body { font-size: 1.06rem; line-height: 1.7; }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="nav-container">
+            <button onclick="toggleMenu()" id="menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">☰</button>
+            <ul id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                
+                <li><a href="rooms.html">Rooms</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="booking.html" class="nav-cta">Book Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <script>
+        function toggleMenu() {
+            const links = document.getElementById('nav-links');
+            const toggle = document.getElementById('menu-toggle');
+            const isOpen = links.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        }
+        function handleResize() {
+            if (window.innerWidth > 768) {
+                document.getElementById('nav-links').classList.remove('open');
+            }
+        }
+        window.addEventListener('resize', handleResize);
+        window.addEventListener('load', handleResize);
+    </script>
+
+    <section class="hero">
+        <div class="hero-bg" aria-hidden="true">
+            <span class="blob blob-1"></span>
+            <span class="blob blob-2"></span>
+            <span class="blob blob-3"></span>
+            <span class="blob blob-4"></span>
+        </div>
+        <div class="hero-container">
+            <div class="hero-column">
+                <p class="hero-text">Contact Us</p>
+                <p class="hero-paragraph">Planning a stay, a conference, a wedding or a business trip? Talk to us. You can book direct, call our front desk, email us, or visit any Genesis hotel — Kampala, Entebbe or Jinja. We reply within one working day.</p>
+                <div class="hero-btns">
+                    <a href="booking.html" class="btn btn-primary">Book Your Stay</a>
+                    <a href="hotels.html" class="btn btn-secondary">View Our Hotels</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-info-content">
+                        <h3>Get In Touch</h3>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                <div class="contact-text">
+                                    <h4>Our Office</h4>
+                                    <p>Uganda: Ntinda-Kisasi Road, Kampala<br>Hotels in Kampala, Entebbe &amp; Jinja</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                                <div class="contact-text">
+                                    <h4>Call Us</h4>
+                                    <p>Front Desk: 24/7<br>Mon-Sun: Always open</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                                <div class="contact-text">
+                                    <h4>Email Us</h4>
+                                    <p><a href="mailto:apacheremembers982@gmail.com">apacheremembers982@gmail.com</a></p>
+                                    <p><a href="mailto:apacheremembers982@gmail.com">apacheremembers982@gmail.com</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <h3>Follow Us</h3>
+                        <div class="social-contact">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form" id="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm">
+                        <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="your.email@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" name="subject" class="form-control" required>
+                                <option value="">What is this regarding?</option>
+                                <option>Room Booking</option>
+                                <option>Conference / Event</option>
+                                <option>Wedding</option>
+                                <option>Airport Pickup</option>
+                                <option>General Enquiry</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" class="form-control" placeholder="Tell us your dates, hotel and number of guests..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <p id="form-status" role="status" aria-live="polite"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbykghtKQSxUd-2CU5IgevVmI9HScBsdFW6LQuQcWKs7-ESFIzgwWt9drhsrlplI-zkd/exec';
+            document.getElementById('contactForm').addEventListener('submit', async function (e) {
+                e.preventDefault();
+                const form = e.target;
+                const btn = form.querySelector('button[type="submit"]');
+                const status = document.getElementById('form-status');
+                const originalText = btn.textContent;
+                btn.disabled = true; btn.textContent = 'Sending…'; status.textContent = ''; status.className = '';
+                const data = new URLSearchParams(new FormData(form));
+                try {
+                    await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: data });
+                    form.reset();
+                    status.textContent = "Thanks! Your message has been sent.";
+                    status.style.color = '#2e7d32';
+                } catch (err) {
+                    status.textContent = 'Something went wrong. Please email us directly.';
+                    status.style.color = '#c62828';
+                } finally { btn.disabled = false; btn.textContent = originalText; }
+            });
+        </script>
+    </section>
+
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about staying with Genesis</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">How do I book a room? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><div class="faq-answer-content"><p>Booking is easy! Go to our Booking page, choose your hotel, dates and room type, and confirm. You’ll get instant confirmation by email / SMS. You can also call our 24/7 front desk.</p></div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What types of rooms do you have? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><div class="faq-answer-content"><p>We offer Standard, Deluxe, Executive and Family rooms, plus Boutique Suites for longer stays. All rooms include free Wi-Fi, breakfast options and 24-hour housekeeping.</p></div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How are payments processed? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><div class="faq-answer-content"><p>We handle all payments securely. Guests pay when they book, with instant confirmation. We accept major cards, mobile money and bank transfer for corporate bookings.</p></div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What safety measures do you have in place? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><div class="faq-answer-content"><p>Safety is our top priority. All hotels have 24-hour reception, secure parking, CCTV and trained staff. We also have clear safety guidelines for events and conferences.</p></div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How do I find a hotel near me? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><div class="faq-answer-content"><p>Visit our Hotels page and choose Kampala, Entebbe or Jinja. You can see photos, room types, rates and location — and book direct for the best rate.</p></div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do you host conferences and weddings? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><div class="faq-answer-content"><p>Yes! Our Conference &amp; Events venues host meetings, weddings and corporate events for up to 300 guests, with catering, AV and event planning support.</p></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="map-section">
+        <div class="container">
+            <div class="section-title"><h2>Visit Our Hotels</h2><p>We'd love to welcome you in person</p></div>
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Our Headquarters</h3>
+                    <p>In Kampala — Ntinda-Kisasi Road. Hotels in Kampala, Entebbe and Jinja.</p>
+                    <p>Front Desk Open 24/7 — Every Day</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Book Your Stay?</h2>
+            <p>Shoot us a message, book your room, or share our links — get involved any way you can. Best rate guaranteed when you book direct.</p>
+            <div class="cta-btns">
+                <a href="booking.html" class="btn btn-light">Book Your Stay</a>
+                <a href="hotels.html" class="btn btn-outline-light">View Our Hotels</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div style="margin: 20px auto; max-width: 1200px; text-align: center;">
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-bottom: 30px;">
+                <div class="footer-column" style="margin: 15px; min-width: 200px;">
+                    <h3>Genesis Hospitality Group</h3>
+                    <p style="margin: 15px 0;">A chain of hotels offering comfortable stays, great dining and memorable experiences.</p>
+                </div>
+                <div class="footer-column" style="margin: 15px; min-width: 200px;">
+                    <h3>Values</h3>
+                    <ul class="contact-info" style="list-style: none; padding: 0; margin: 15px 0;">
+                        <li style="margin: 8px 0;"><span>Hospitality</span></li>
+                        <li style="margin: 8px 0;"><span>Comfort</span></li>
+                        <li style="margin: 8px 0;"><span>Reliability</span></li>
+                    </ul>
+                </div>
+                <div class="footer-column" style="margin: 15px; min-width: 200px;">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links" style="list-style: none; padding: 0; margin: 15px 0;">
+                        <li style="margin: 8px 0;"><a href="index.html">Home</a></li>
+                        <li style="margin: 8px 0;"><a href="hotels.html">Hotels</a></li>
+                        <li style="margin: 8px 0;"><a href="rooms.html">Rooms</a></li>
+                        <li style="margin: 8px 0;"><a href="about.html">About</a></li>
+                        <li style="margin: 8px 0;"><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column" style="margin: 15px; min-width: 200px;">
+                    <h3>Legal</h3>
+                    <ul class="footer-links" style="list-style: none; padding: 0; margin: 15px 0;">
+                        <li style="margin: 8px 0;"><a href="legal.html#privacy">Privacy Policy</a></li>
+                        <li style="margin: 8px 0;"><a href="legal.html#terms">Terms of Service</a></li>
+                        <li style="margin: 8px 0;"><a href="legal.html#cookie">Cookie Policy</a></li>
+                        <li style="margin: 8px 0;"><a href="legal.html#accessibility">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright" style="margin-top: 30px; text-align: center;">
+                <p style="margin: 10px 0;">&copy; 2026 Genesis Hospitality Group. All rights reserved.</p>
+                <p style="margin: 10px 0;">A hotel chain and hospitality company</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (!navbar) return;
+                if (window.scrollY > 50) { navbar.classList.add('scrolled'); } else { navbar.classList.remove('scrolled'); }
+            });
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    faqItems.forEach(otherItem => { if (otherItem !== item) { otherItem.classList.remove('active'); } });
+                    item.classList.toggle('active');
+                });
+            });
+            const contactItems = document.querySelectorAll('.contact-item');
+            const contactFormElements = document.querySelectorAll('.form-group');
+            contactItems.forEach((item, index) => {
+                item.style.opacity = "0"; item.style.transform = "translateY(20px)";
+                item.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+                setTimeout(() => { item.style.opacity = "1"; item.style.transform = "translateY(0)"; }, 500 + (index * 100));
+            });
+            contactFormElements.forEach((element, index) => {
+                element.style.opacity = "0"; element.style.transform = "translateY(20px)";
+                element.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+                setTimeout(() => { element.style.opacity = "1"; element.style.transform = "translateY(0)"; }, 500 + (index * 100));
+            });
+        });
+    </script>
+</body>
+  </html>
